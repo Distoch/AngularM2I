@@ -1,2 +1,2 @@
-// so the typescript compiler doesn't complain about the global config object
+// Pour que le compilateur typescript n'ait pas de problème avec la global config
 declare var config: any;

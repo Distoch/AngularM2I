@@ -30,7 +30,7 @@ module.exports = {
             inject: 'body'
         }),
         new webpack.DefinePlugin({
-            // global app config object
+            // Pour récupérer l'objet de config globale
             config: JSON.stringify({
                 apiUrl: 'http://localhost:4000'
             })

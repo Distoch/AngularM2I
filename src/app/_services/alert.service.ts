@@ -8,14 +8,14 @@ export class AlertService {
     private keepAfterNavigationChange = false;
 
     constructor(private router: Router) {
-        // clear alert message on route change
+        // Change le message d'alerte à chaque utilisation du routing
         router.events.subscribe(event => {
             if (event instanceof NavigationStart) {
                 if (this.keepAfterNavigationChange) {
-                    // only keep for a single location change
+                    // Change quand changement de localisation
                     this.keepAfterNavigationChange = false;
                 } else {
-                    // clear alert
+                    // Clear les alertes
                     this.subject.next();
                 }
             }

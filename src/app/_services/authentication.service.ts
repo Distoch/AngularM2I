@@ -22,9 +22,9 @@ export class AuthenticationService {
     login(username: string, password: string) {
         return this.http.post<any>(`${config.apiUrl}/users/authenticate`, { username, password })
             .pipe(map(user => {
-                // login successful if there's a jwt token in the response
+                // Le login réussi si il y a un token jwt dans la réponse.
                 if (user && user.token) {
-                    // store user details and jwt token in local storage to keep user logged in between page refreshes
+                    // Stock les détails utilisateurs et le token jwt dans le Local storage afin de garder l'utilisateur connecté pendant les changements et rafraichissemnts de pages. 
                     localStorage.setItem('currentUser', JSON.stringify(user));
                     this.currentUserSubject.next(user);
                 }
@@ -34,7 +34,7 @@ export class AuthenticationService {
     }
 
     logout() {
-        // remove user from local storage to log user out
+        // Retire l'utilisateur du local storage en cas de log out
         localStorage.removeItem('currentUser');
         this.currentUserSubject.next(null);
     }

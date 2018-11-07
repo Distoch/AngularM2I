@@ -18,7 +18,7 @@ export class RegisterComponent implements OnInit {
         private userService: UserService,
         private alertService: AlertService
     ) { 
-        // redirect to home if already logged in
+        // Renvoie à la page d'accueil si déjà logged in
         if (this.authenticationService.currentUserValue) { 
             this.router.navigate(['/']);
         }
@@ -33,13 +33,13 @@ export class RegisterComponent implements OnInit {
         });
     }
 
-    // convenience getter for easy access to form fields
+    // Getter de convenance pour accèder facilement aux infos du formulaire
     get f() { return this.registerForm.controls; }
 
     onSubmit() {
         this.submitted = true;
 
-        // stop here if form is invalid
+        // Arrêt de l'opération si le formulaire n'est pas valide
         if (this.registerForm.invalid) {
             return;
         }

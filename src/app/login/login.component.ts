@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
         private authenticationService: AuthenticationService,
         private alertService: AlertService
     ) {
-        // redirect to home if already logged in
+        // Redirige vers la page d'accueil si l'utilisateur est déjà enregistré
         if (this.authenticationService.currentUserValue) { 
             this.router.navigate(['/']);
         }
@@ -31,17 +31,17 @@ export class LoginComponent implements OnInit {
             password: ['', Validators.required]
         });
 
-        // get return url from route parameters or default to '/'
+        // Récupére returnUrl depuis les paramètres de routing ou donne '/ par défaut
         this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
     }
 
-    // convenience getter for easy access to form fields
+    // Getter pour simplifier l'accès aux données du formulaire.
     get f() { return this.loginForm.controls; }
 
     onSubmit() {
         this.submitted = true;
 
-        // stop here if form is invalid
+        // return si formulaire invalide
         if (this.loginForm.invalid) {
             return;
         }
